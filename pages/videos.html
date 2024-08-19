@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/videos.css">
+    <title>video</title>
+</head>
+<body class="dark-theme">
+    <div id="mySidenav" class="sidenav">
+        <div class="side-content">
+            <div class="closebtn" onclick="closeNav()">&times;</div>
+            <a href="#">فديوهات</a>
+            <a href="#">اسئلة عامة</a>
+            <a href="#">امتحانات</a>
+            <a href="#">كويزات</a>
+            <hr>
+            <div class="mood">
+                <button class="btn-dark active-btn"><span>dark</span><img src="../Images/icon-moon.svg" alt="icon"></button>
+                <button class="btn-light"><span>light</span> <img src="../Images/icon-sun.svg" alt="icon"></button>
+            </div>
+            
+            <a href="../index.html"><button class="btn-back-side">عودة</button></a>
+        </div>
+    </div>
+
+    <div class="con">
+        <div class="navpar">
+            <div class="logo">
+                <img src="../Images/H Logotype Orange.svg" alt="logo">
+            </div>
+    
+            <div class="nav-icons">
+                <a href="../index.html"><button class="btn-back">عودة</button></a>
+                <img onclick="openNav()" class = "Menu-icon" src="../Images/icons8-menu-96-_3_.svg" a>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="video-con">
+            <div class="video">
+                <img src="https://img.icons8.com/external-neu-royyan-wijaya/96/F78121/external-circle-neu-music-neu-royyan-wijaya.png" alt="icon">
+            </div>
+        </div>
+    </div>
+
+    
+    <script>
+        const dark = document.querySelector(".btn-dark");
+        const light = document.querySelector(".btn-light");
+        document.addEventListener('contextmenu', event => event.preventDefault());
+    
+        let theme = localStorage.getItem("theme");
+        if (theme != null) {
+            changeTheme(theme);
+        }
+        
+    
+        dark.addEventListener("click",function () {
+            let theme = "dark";
+            localStorage.setItem("theme",theme);
+            changeTheme(theme);
+        })
+    
+        light.addEventListener("click",function () {
+            let theme = "light";
+            localStorage.setItem("theme",theme);
+            changeTheme(theme);
+        })
+    
+        function changeTheme(theme) {
+            if (theme == "dark") {
+                document.body.className = "dark-theme";
+                light.classList.remove("active-btn");
+                dark.classList.add("active-btn");
+            } else {
+                document.body.className = "light-theme";
+                dark.classList.remove("active-btn");
+                light.classList.add("active-btn");
+            }
+        }
+
+        function openNav() {
+            document.getElementById("mySidenav").classList.add("side-width");
+            }
+        
+        function closeNav() {
+            document.getElementById("mySidenav").classList.remove("side-width");
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>BESHOSAURUS</title>
+  </head>
+  <body class="dark-theme">
+    <div class="bg"></div>
+
+    <div id="mySidenav" class="sidenav">
+      <div class="side-content">
+        <div href="#" class="closebtn" onclick="closeNav()">&times;</div>
+        <a href="pages/videos.html">فديوهات</a>
+        <a href="pages/Questions.html">اسئلة عامة</a>
+        <a href="#">امتحانات</a>
+        <a href="pages/Quiz.html">كويزات</a>
+        <hr />
+        <div class="mood">
+          <button class="btn-dark active-btn">
+            dark <img src="Images/icon-moon.svg" alt="icon" />
+          </button>
+          <button class="btn-light">
+            light <img src="Images/icon-sun.svg" alt="icon" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="home-page">
+        <div class="navpar d-flex justify-content-between">
+          <div class="logo">
+            <img src="Images/H Logotype Orange.svg" alt="logo" />
+          </div>
+
+          <div class="links">
+            <ul>
+              <li><a href="#">الرئيسية</a></li>
+              <li><a href="#">عنا</a></li>
+              <li><a href="#">تواصل معنا</a></li>
+            </ul>
+          </div>
+
+          <div class="nav-icons">
+            <a href="pages/profile.html"
+              ><img
+                class="user-icon"
+                src="data:image/png;base64,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"
+                alt="icon"
+            /></a>
+            <img
+              onclick="openNav()"
+              class="Menu-icon"
+              src="Images/icons8-menu-96-_3_.svg"
+              alt="menu-icon"
+            />
+          </div>
+        </div>
+        <hr />
+
+        <div class="home-content">
+          <h1>طريقك للنجاح</h1>
+          <p>
+            مرحبًا بكم في موقعنا الخاص بالجيولوجيا يقدم موقعنا فديوهات شرح مبسطة
+            وسهلة الفهم بالإضافة إلى أسئلة وامتحانات تدريبية لتحسين فهمك
+            واستيعابك للمادة بشكل أفضل مما يمكنك من تعلم المادة وتحسين مستواك
+            فيها في وقتك المناسب
+          </p>
+
+          <a href="pages/signIn.html"
+            ><button class="btn-regester">إشترك الان</button></a
+          >
+        </div>
+      </div>
+
+      <div class="introduce">
+        <div class="introduce-title text-center">
+          <h1>من انا؟</h1>
+          <div class="introduce-container">
+            <div class="introduce-img">
+              <img src="Images/Beshoy-Avatar-1 copy.png" alt="masterImg" />
+            </div>
+
+            <div class="introduce-content shadow">
+              <p>
+                ازيك ي بطل ثانوية عامة ؟ لعلك بخير انا اسمى بيشوى عماد شغوف بكل
+                حاجة بعملها من توصيل معلمومة ومادة علمية. .إثراء خيراتك في
+                الجيولوجيا وتطويرك في .المادة العلمية ده دورى الرئيسى معاك على
+                مدار السنة يا بطل .حاصل على بكالوريوس في العلوم و التربية قسم
+                العلوم البيولوجية والجيولوجية حاصل على شهادة إنجاز تدريبي في
+                مجال الجيولوجيا الهندسية. حاصل على شهادة تدريبية في في برنامج
+                إعداد القادة. مجتاز لدورة التعليم التعاوني و حاصل على شهادة
+                اعداد مدربين tot من الأخر كدة تأهيلك النفسي و العلمي و هدفك
+                الأكاديمي علينا احنا.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="featrues text-center">
+        <div class="featrues-title">
+          <h1>مميزاتنا</h1>
+          <div
+            class="featrues-cards d-flex flex-row flex-wrap justify-content-center gap-5"
+          >
+            <div class="featrues-card text-center shadow">
+              <div class="card-content">
+                <div class="card-img">
+                  <img
+                    src="Images/icons8-laptop-play-video-100.png"
+                    alt="Icon"
+                  />
+                </div>
+                <div class="card-title">
+                  <h5>فديوهات مبسطة</h5>
+                </div>
+                <div class="card-text">
+                  <p>
+                    يتيح الموقع فديوهات شرح سهلة ومبسطة مما يمكن الطلاب من فهم
+                    المفاهيم الصعبة والمصطلاحات الصعبة بشكل أفضل.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="featrues-card text-center shadow">
+              <div class="card-content">
+                <div class="card-img">
+                  <img
+                    src="Images/icons8-questions-60.png"
+                    alt="Icon"
+                    width="100px"
+                  />
+                </div>
+                <div class="card-title">
+                  <h5>أسئلة تفاعلية</h5>
+                </div>
+                <div class="card-text">
+                  <p>
+                    يحتوي الموقع على اسئلة تفاعلية وتدريبات والتي تساعد على
+                    تحسين فهم المفاهيم المختلفة والتدريب المستمر .على حلى
+                    الامتحانات
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="featrues-card text-center shadow">
+              <div class="card-content">
+                <div class="card-img">
+                  <img src="Images/icons8-goal-100.png" alt="Icon" />
+                </div>
+                <div class="card-title">
+                  <h5>متابعة التقدم</h5>
+                </div>
+                <div class="card-text">
+                  <p>
+                    يتيح الموقع متابعة تقدم الطلاب من خلال معرفة نتاجئهم ف
+                    التدريبات والامتحانات مما يساعدهم على تحديد نقاط القوة
+                    والضغف.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="featrues-card text-center shadow">
+              <div class="card-content">
+                <div class="card-img">
+                  <img
+                    src="Images/icons8-financial-success-100 copy.png"
+                    alt="Icon"
+                  />
+                </div>
+                <div class="card-title">
+                  <h5>استعد للنجاح</h5>
+                </div>
+                <div class="card-text">
+                  <p>
+                    يقدم الموقع محتوى كامل ليناسبك ويناسب وقتك الخاص ويدربك على
+                    تحسين مهاراتك والاستعداد الجيد .للنجاح في الامتحان
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-con text-center container">
+        <div class="video-title">
+          <h1>تعريف المنصة</h1>
+        </div>
+
+        <div class="video-content text-center">
+          <div style="padding: 56.25% 0 0 0; position: relative">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://app.videas.fr/embed/4052d0f3-b16f-4ca4-8565-bc7d260d6d32/"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen="true"
+              style="position: absolute; top: 0; left: 0"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="feedback">
+        <div class="feedback-title text-center">
+          <h1>أراء الطلاب</h1>
+        </div>
+
+        <div
+          class="feedback-cards d-flex flex-row flex-wrap justify-content-between"
+        >
+          <div class="feedback-card shadow">
+            <div class="feedback-detial d-flex flex-row">
+              <img
+                loading="lazy"
+                class="feedback-avatar"
+                src="Images/avatar-svgrepo-com (1).svg"
+                alt="avatarIcon"
+              />
+              <h5>Nora mostafa</h5>
+            </div>
+
+            <div class="feedback-comment">
+              <p>
+                أستاذنا واخونا الكبير وحصته دايما جميلة وخفيفة ربنا يكرمه بكل
+                الخير.
+              </p>
+            </div>
+          </div>
+
+          <div class="feedback-card shadow">
+            <div class="feedback-detial d-flex flex-row">
+              <img
+                loading="lazy"
+                class="feedback-avatar"
+                src="Images/avatar.png"
+                alt="avatarIcon"
+              />
+              <h5>Mohamed dawy</h5>
+            </div>
+
+            <div class="feedback-comment">
+              <p>
+                حقيقى رغم صغر سنه لكن ارتحت لشرحو البسيط الى بيوصلك المعلومه
+                بسهوله جدا والحل الكتير الى خلى الماده فى جيبونا حرفيا فبجد ربنا
+                يباركله ويزيده من نعيم.
+              </p>
+            </div>
+          </div>
+
+          <div class="feedback-card shadow">
+            <div class="feedback-detial d-flex flex-row">
+              <img
+                loading="lazy"
+                class="feedback-avatar"
+                src="Images/avatar-svgrepo-com (1).svg"
+                alt="avatarIcon"
+              />
+              <h5>Hanan mohamed</h5>
+            </div>
+
+            <div class="feedback-comment">
+              <p>
+                مستر بيشوى من احسن الاساتذة للى ساعدتنى حبيت طريقة شرحو البسيطة
+                وقدرت على توصيل المعلومة ربنا يكرمك على قد طيبتك وجدعنتك.
+              </p>
+            </div>
+          </div>
+
+          <div class="feedback-card shadow">
+            <div class="feedback-detial d-flex flex-row">
+              <img
+                loading="lazy"
+                class="feedback-avatar"
+                src="Images/avatar.png"
+                alt="avatarIcon"
+              />
+              <h5>Eslam abd el hamed</h5>
+            </div>
+
+            <div class="feedback-comment">
+              <p>
+                فخر العرب بجد دى حاجة حلوة اننا نغير المسمى التلقيدى للاستاذ انه
+                لازم 60 سنة وشعره ابيض مع كامل احترامى للاساتذة دول قيمة وقامة.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content d-flex justify-content-around flex-wrap">
+          <div class="footer-icons d-flex justify-content-center">
+            <a
+              href="https://www.facebook.com/profile.php?id=100041424555685&mibextid=ZbWKwL"
+              ><img
+                id="facebook"
+                src="Images/facebook-svgrepo-com (1).svg"
+                alt="facebook"
+            /></a>
+            <a href=""
+              ><img
+                id="instgram"
+                src="Images/instagram-svgrepo-com (3).svg"
+                alt="instgram"
+            /></a>
+            <a href="http://wa.me/+201017893980?text="
+              ><img
+                id="whatsApp"
+                src="Images/whatsapp-svgrepo-com (1).svg"
+                alt="whatsApp"
+            /></a>
+          </div>
+
+          <div class="footer-text">
+            <h6>Developed by : Mohamed badry</h6>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const dark = document.querySelector(".btn-dark");
+      const light = document.querySelector(".btn-light");
+      const feedForward = document.getElementById("feed-forward");
+      const c = document.querySelector(".feedback-card");
+
+      let theme = localStorage.getItem("theme");
+      if (theme != null) {
+        changeTheme(theme);
+      }
+
+      dark.addEventListener("click", function () {
+        let theme = "dark";
+        localStorage.setItem("theme", theme);
+        changeTheme(theme);
+      });
+
+      light.addEventListener("click", function () {
+        let theme = "light";
+        localStorage.setItem("theme", theme);
+        changeTheme(theme);
+      });
+
+      function changeTheme(theme) {
+        if (theme == "dark") {
+          document.body.className = "dark-theme";
+          light.classList.remove("active-btn");
+          dark.classList.add("active-btn");
+        } else {
+          document.body.className = "light-theme";
+          dark.classList.remove("active-btn");
+          light.classList.add("active-btn");
+        }
+      }
+
+      function openNav() {
+        document.getElementById("mySidenav").classList.add("side-width");
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").classList.remove("side-width");
+      }
+
+      var observer = new IntersectionObserver((entries) => {
+        for (let i = 0; i < 4; i++) {
+          entries.forEach((entry) => {
+            const square = entry.target.querySelectorAll(".featrues-card");
+            if (entry.isIntersecting) {
+              square[i].animate(
+                [
+                  { opacity: "0", transform: "translate3d(50%, 0, 0)" },
+                  { opacity: "1", transform: "none" },
+                ],
+                {
+                  duration: 1000,
+                  delay: i * 1000,
+                  fill: "both",
+                }
+              );
+              return;
+            }
+          });
+        }
+      });
+      observer.observe(document.querySelector(".featrues-cards"));
+
+      var observer = new IntersectionObserver((entries) => {
+        for (let i = 0; i < 4; i++) {
+          entries.forEach((entry) => {
+            const square = entry.target.querySelectorAll(".feedback-card");
+            if (entry.isIntersecting) {
+              square[i].animate(
+                [
+                  { opacity: "0", transform: "translate3d(50%, 0, 0)" },
+                  { opacity: "1", transform: "none" },
+                ],
+                {
+                  duration: 1000,
+                  delay: i * 1000,
+                  fill: "both",
+                }
+              );
+              return;
+            }
+          });
+        }
+      });
+      observer.observe(document.querySelector(".feedback-cards"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/Questions.css" />
+    <link rel="icon" type="image/svg" href="../Images/download.svg" />
+    <title>Questions</title>
+  </head>
+
+  <body
+    class="dark-theme"
+    onmousedown="return false"
+    onselectstart="return false"
+  >
+    <div id="mySidenav" class="sidenav">
+      <div class="side-content">
+        <div class="closebtn" onclick="closeNav()">&times;</div>
+        <ul id="Questions-links" class="Questions-links"></ul>
+        <hr />
+        <div class="mood">
+          <button class="btn-dark active-btn">
+            <span>dark</span><img src="../Images/icon-moon.svg" alt="icon" />
+          </button>
+          <button class="btn-light">
+            <span>light</span> <img src="../Images/icon-sun.svg" alt="icon" />
+          </button>
+        </div>
+        <a href="../index.html"><button class="btn-back-side">عودة</button></a>
+      </div>
+    </div>
+
+    <div class="con">
+      <div class="navpar">
+        <div class="logo">
+          <img src="../Images/H Logotype Orange.svg" alt="logo" />
+        </div>
+
+        <div class="nav-icons">
+          <a href="../index.html"><button class="btn-back">عودة</button></a>
+          <img
+            onclick="openNav()"
+            class="Menu-icon"
+            src="../Images/icons8-menu-96-_3_.svg"
+            alt="menu-icon"
+          />
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="Questions-con">
+        <div class="Questions-header">
+          <p></p>
+        </div>
+
+        <hr />
+        <div class="Question">
+          <p></p>
+        </div>
+
+        <div class="answers">
+          <form id="form">
+            <div class="true">
+              <div class="radio-con">
+                <input
+                  class="answer"
+                  type="radio"
+                  name="answer"
+                  value=""
+                  id="answer1"
+                />
+                <label class="answer-label" for="answer1"></label>
+              </div>
+            </div>
+
+            <div class="false">
+              <div class="radio-con">
+                <input
+                  class="answer"
+                  type="radio"
+                  name="answer"
+                  value=""
+                  id="answer2"
+                />
+                <label class="answer-label" for="answer2"></label>
+              </div>
+            </div>
+
+            <div>
+              <div class="radio-con">
+                <input
+                  class="answer"
+                  type="radio"
+                  name="answer"
+                  value=""
+                  id="answer3"
+                />
+                <label class="answer-label" for="answer3"></label>
+              </div>
+            </div>
+
+            <div>
+              <div class="radio-con">
+                <input
+                  class="answer"
+                  type="radio"
+                  name="answer"
+                  value=""
+                  id="answer4"
+                />
+                <label class="answer-label" for="answer4"></label>
+              </div>
+            </div>
+            <hr />
+
+            <div class="Questions-footer">
+              <input id="submit" type="submit" value="اجابة" />
+              <div class="icons">
+                <img
+                  id="next"
+                  src="data:image/png;base64,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"
+                  alt="icon"
+                />
+                <img
+                  id="back"
+                  src="data:image/png;base64,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"
+                  alt="icon"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <audio
+        id="audio"
+        src="../audio/Y2Mate.is - Correct Answer Marimba (Version 1) (Right Win Winning Success Good Idea Quiz Show App Game Tone...-hhnd7y37oHg-128k-1657841498769.mp3"
+      ></audio>
+    </div>
+
+    <script>
+      let data = [
+        [
+          {
+            title: "gate1_Questions",
+            Questions_number: "5",
+          },
+
+          {
+            Questions:
+              "اى من فروع الجيولوجيا يدرس توزيع العناصر فى القشرة الارضية ؟",
+            answer1: "علم المعادن والبلورات",
+            answer2: "علم طبقات الارض",
+            answer3: "الجيوكيماء",
+            answer4: "الجيوفيزياء",
+            right_answer: "الجيوكيماء",
+          },
+
+          {
+            Questions:
+              "من الآتي يُمثِّل الترتيب الصحيح للتركيب الداخلي للأرض من الطبقة الداخلية إلى الطبقة الخارجية؟",
+            answer1: "اللب الداخلي، الليثوسفير، الوشاح، القشرة الأرضية",
+            answer2: "القشرة الأرضية، الوشاح، اللب الخارجي، اللب الداخلي",
+            answer3: "اللب الداخلي، اللب الخارجي، القشرة الأرضية، الوشاح",
+            answer4: "اللب الداخلي، اللب الخارجي، الوشاح، القشرة الأرضية",
+            right_answer: "اللب الداخلي، اللب الخارجي، الوشاح، القشرة الأرضية",
+          },
+
+          {
+            Questions: "ما التركيب الكيميائي للُّب الخارجي؟",
+            answer1: "مصهور الحديد والنيكل",
+            answer2: "مصهور الحديد فقط",
+            answer3: "أكاسيد الحديد والماغنيسيوم والسليكون",
+            answer4: "السيليكا والماغنيسيوم",
+            right_answer: "مصهور الحديد والنيكل",
+          },
+
+          {
+            Questions:
+              "يستخدم الجيوفيزيائيون الموجات الزلزالية لتحديد التركيب الداخلي لكوكب الأرض. ما المصدر الأفضل للموجات الزلزالية؟",
+            answer1: "أالزلازل",
+            answer2: "بالتسونامي",
+            answer3: "الثورات البركانية",
+            answer4: "تيارات الحمل",
+            right_answer: "أالزلازل",
+          },
+
+          {
+            Questions: "أيٌّ ممَّا يأتي يَنتُج عنه تكوُّن الغلاف المائي؟",
+            answer1: "الزلازل",
+            answer2: "حركة المياه الجوفية",
+            answer3: "حركة الألواح التكتونية",
+            answer4: "ثوران البراكين القديمة",
+            right_answer: "ثوران البراكين القديمة",
+          },
+        ],
+      ];
+
+      const dark = document.querySelector(".btn-dark");
+      const light = document.querySelector(".btn-light");
+      const Questions_num = document.querySelector(".Questions-header p");
+      const answers = document.querySelectorAll(".answer");
+      const answer_label = document.querySelectorAll(".answer-label");
+      const form = document.getElementById("form");
+      const next = document.getElementById("next");
+      const back = document.getElementById("back");
+      const submit = document.getElementById("submit");
+      const Question = document.querySelector(".Question p");
+      const Question_links = document.getElementById("Questions-links");
+      const audio = document.getElementById("audio");
+      document.addEventListener("contextmenu", (event) =>
+        event.preventDefault()
+      );
+
+      const questions_page = 1;
+      let theme = localStorage.getItem("theme");
+      if (theme != null) {
+        changeTheme(theme);
+      }
+
+      dark.addEventListener("click", function () {
+        let theme = "dark";
+        localStorage.setItem("theme", theme);
+        changeTheme(theme);
+      });
+
+      light.addEventListener("click", function () {
+        let theme = "light";
+        localStorage.setItem("theme", theme);
+        changeTheme(theme);
+      });
+
+      function changeTheme(theme) {
+        if (theme == "dark") {
+          document.body.className = "dark-theme";
+          light.classList.remove("active-btn");
+          dark.classList.add("active-btn");
+        } else {
+          document.body.className = "light-theme";
+          dark.classList.remove("active-btn");
+          light.classList.add("active-btn");
+        }
+      }
+
+      let selected;
+      let current = 1;
+
+      for (let i = 1; i <= data[questions_page - 1][0].Questions_number; i++) {
+        let li = document.createElement("li");
+        let text = document.createTextNode(`السوال ${i}`);
+        li.id = i;
+        li.className = "Question_link";
+        li.appendChild(text);
+        Question_links.appendChild(li);
+      }
+
+      document.addEventListener("click", function (e) {
+        if (e.target.classList == "Question_link") {
+          console.log(e.target.id);
+          current = e.target.id;
+          set();
+        }
+      });
+
+      let right_answer = data[questions_page - 1][current]["right_answer"];
+
+      function set() {
+        right_answer = data[questions_page - 1][current]["right_answer"];
+        Question.innerHTML = data[questions_page - 1][current][`Questions`];
+        Questions_num.innerHTML = `${current} من ${data[0][0].Questions_number}`;
+
+        for (let i = 1; i <= 4; i++) {
+          answer_label[i - 1].innerHTML =
+            data[questions_page - 1][current][`answer${i}`];
+          answers[i - 1].setAttribute(
+            "answer",
+            data[questions_page - 1][current][`answer${i}`]
+          );
+        }
+        answers.forEach(
+          (ele) => (ele.parentElement.parentElement.classList = "")
+        );
+        submit.style.visibility = "visible";
+
+        for (const radio of answers) {
+          radio.checked = false;
+        }
+      }
+
+      set();
+
+      next.addEventListener("click", function () {
+        if (current != parseInt(data[questions_page - 1][0].Questions_number)) {
+          current++;
+          set();
+        }
+      });
+
+      back.addEventListener("click", function () {
+        if (current != 1) {
+          current--;
+          set();
+        }
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        submit.style.visibility = "hidden";
+        for (const radio of answers) {
+          if (radio.checked) {
+            selected = radio;
+            break;
+          }
+        }
+
+        if (selected.getAttributeNode("answer").value == right_answer) {
+          selected.parentElement.parentElement.classList.add("true");
+          audio.play();
+        } else {
+          selected.parentElement.parentElement.classList.add("false");
+          for (let i = 0; i < 4; i++) {
+            if (answers[i].getAttributeNode("answer").value == right_answer) {
+              answers[i].parentElement.parentElement.classList.add("true");
+            }
+          }
+        }
+      });
+
+      function openNav() {
+        document.getElementById("mySidenav").classList.add("side-width");
+        document.body.style.overflowY = "hidden";
+      }
+
+      function closeNav() {
+        document.getElementById("mySidenav").classList.remove("side-width");
+        document.body.style.overflowY = "visible";
+      }
+
+      document.addEventListener("click", function (e) {
+        if (
+          e.target.className == "bg" ||
+          e.target.className == "home-page" ||
+          e.target.className == "container"
+        ) {
+          closeNav();
+        }
+      });
+
+      function ctrlShiftKey(e, keyCode) {
+        return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+      }
+
+      document.onkeydown = (e) => {
+        // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
+        if (
+          event.keyCode === 123 ||
+          ctrlShiftKey(e, "I") ||
+          ctrlShiftKey(e, "J") ||
+          ctrlShiftKey(e, "C") ||
+          (e.ctrlKey && e.keyCode === "U".charCodeAt(0))
+        )
+          return false;
+      };
+    </script>
+  </body>
+</html>
