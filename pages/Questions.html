@@ -139,15 +139,13 @@
         src="../audio/Y2Mate.is - Correct Answer Marimba (Version 1) (Right Win Winning Success Good Idea Quiz Show App Game Tone...-hhnd7y37oHg-128k-1657841498769.mp3"
       ></audio>
     </div>
-
     <script>
-      let data = [
+      const data = [
         [
           {
             title: "gate1_Questions",
             Questions_number: "5",
           },
-
           {
             Questions:
               "اى من فروع الجيولوجيا يدرس توزيع العناصر فى القشرة الارضية ؟",
@@ -157,7 +155,6 @@
             answer4: "الجيوفيزياء",
             right_answer: "الجيوكيماء",
           },
-
           {
             Questions:
               "من الآتي يُمثِّل الترتيب الصحيح للتركيب الداخلي للأرض من الطبقة الداخلية إلى الطبقة الخارجية؟",
@@ -167,7 +164,6 @@
             answer4: "اللب الداخلي، اللب الخارجي، الوشاح، القشرة الأرضية",
             right_answer: "اللب الداخلي، اللب الخارجي، الوشاح، القشرة الأرضية",
           },
-
           {
             Questions: "ما التركيب الكيميائي للُّب الخارجي؟",
             answer1: "مصهور الحديد والنيكل",
@@ -176,7 +172,6 @@
             answer4: "السيليكا والماغنيسيوم",
             right_answer: "مصهور الحديد والنيكل",
           },
-
           {
             Questions:
               "يستخدم الجيوفيزيائيون الموجات الزلزالية لتحديد التركيب الداخلي لكوكب الأرض. ما المصدر الأفضل للموجات الزلزالية؟",
@@ -186,7 +181,6 @@
             answer4: "تيارات الحمل",
             right_answer: "أالزلازل",
           },
-
           {
             Questions: "أيٌّ ممَّا يأتي يَنتُج عنه تكوُّن الغلاف المائي؟",
             answer1: "الزلازل",
@@ -200,133 +194,123 @@
 
       const dark = document.querySelector(".btn-dark");
       const light = document.querySelector(".btn-light");
-      const Questions_num = document.querySelector(".Questions-header p");
+      const questionsNum = document.querySelector(".Questions-header p");
       const answers = document.querySelectorAll(".answer");
-      const answer_label = document.querySelectorAll(".answer-label");
+      const answerLabels = document.querySelectorAll(".answer-label");
       const form = document.getElementById("form");
       const next = document.getElementById("next");
       const back = document.getElementById("back");
       const submit = document.getElementById("submit");
-      const Question = document.querySelector(".Question p");
-      const Question_links = document.getElementById("Questions-links");
+      const questionElement = document.querySelector(".Question p");
+      const questionLinks = document.getElementById("Questions-links");
       const audio = document.getElementById("audio");
+
       document.addEventListener("contextmenu", (event) =>
         event.preventDefault()
       );
 
-      const questions_page = 1;
+      const questionsPage = 1;
       let theme = localStorage.getItem("theme");
-      if (theme != null) {
+      if (theme) {
         changeTheme(theme);
       }
 
-      dark.addEventListener("click", function () {
-        let theme = "dark";
-        localStorage.setItem("theme", theme);
-        changeTheme(theme);
-      });
+      dark.addEventListener("click", () => setTheme("dark"));
+      light.addEventListener("click", () => setTheme("light"));
 
-      light.addEventListener("click", function () {
-        let theme = "light";
+      function setTheme(theme) {
         localStorage.setItem("theme", theme);
         changeTheme(theme);
-      });
+      }
 
       function changeTheme(theme) {
-        if (theme == "dark") {
-          document.body.className = "dark-theme";
-          light.classList.remove("active-btn");
-          dark.classList.add("active-btn");
-        } else {
-          document.body.className = "light-theme";
-          dark.classList.remove("active-btn");
-          light.classList.add("active-btn");
-        }
+        document.body.className = `${theme}-theme`;
+        light.classList.toggle("active-btn", theme === "light");
+        dark.classList.toggle("active-btn", theme === "dark");
       }
 
       let selected;
       let current = 1;
 
-      for (let i = 1; i <= data[questions_page - 1][0].Questions_number; i++) {
-        let li = document.createElement("li");
-        let text = document.createTextNode(`السوال ${i}`);
-        li.id = i;
-        li.className = "Question_link";
-        li.appendChild(text);
-        Question_links.appendChild(li);
-      }
-
-      document.addEventListener("click", function (e) {
-        if (e.target.classList == "Question_link") {
-          console.log(e.target.id);
-          current = e.target.id;
-          set();
+      function populateQuestionLinks() {
+        for (let i = 1; i <= data[questionsPage - 1][0].Questions_number; i++) {
+          const li = document.createElement("li");
+          li.id = i;
+          li.className = "Question_link";
+          li.textContent = `السوال ${i}`;
+          questionLinks.appendChild(li);
         }
-      });
-
-      let right_answer = data[questions_page - 1][current]["right_answer"];
+      }
 
       function set() {
-        right_answer = data[questions_page - 1][current]["right_answer"];
-        Question.innerHTML = data[questions_page - 1][current][`Questions`];
-        Questions_num.innerHTML = `${current} من ${data[0][0].Questions_number}`;
+        const questionData = data[questionsPage - 1][current];
+        const { right_answer } = questionData;
 
-        for (let i = 1; i <= 4; i++) {
-          answer_label[i - 1].innerHTML =
-            data[questions_page - 1][current][`answer${i}`];
-          answers[i - 1].setAttribute(
-            "answer",
-            data[questions_page - 1][current][`answer${i}`]
-          );
-        }
-        answers.forEach(
-          (ele) => (ele.parentElement.parentElement.classList = "")
+        questionElement.innerHTML = questionData.Questions;
+        questionsNum.textContent = `${current} من ${data[0][0].Questions_number}`;
+
+        answers.forEach((answer, index) => {
+          answerLabels[index].textContent = questionData[`answer${index + 1}`];
+          answer.setAttribute("answer", questionData[`answer${index + 1}`]);
+        });
+
+        answers.forEach((ele) =>
+          ele.parentElement.parentElement.classList.remove("true", "false")
         );
         submit.style.visibility = "visible";
+        answers.forEach((radio) => (radio.checked = false));
+      }
 
-        for (const radio of answers) {
-          radio.checked = false;
+      function handleQuestionLinkClick(e) {
+        if (e.target.classList.contains("Question_link")) {
+          current = parseInt(e.target.id, 10);
+          set();
         }
       }
 
-      set();
-
-      next.addEventListener("click", function () {
-        if (current != parseInt(data[questions_page - 1][0].Questions_number)) {
+      function handleNavigationClick() {
+        if (
+          current < parseInt(data[questionsPage - 1][0].Questions_number, 10)
+        ) {
           current++;
           set();
         }
-      });
+      }
 
-      back.addEventListener("click", function () {
-        if (current != 1) {
+      function handleBackClick() {
+        if (current > 1) {
           current--;
           set();
         }
-      });
+      }
 
-      form.addEventListener("submit", function (e) {
+      function handleSubmit(e) {
         e.preventDefault();
         submit.style.visibility = "hidden";
-        for (const radio of answers) {
-          if (radio.checked) {
-            selected = radio;
-            break;
-          }
-        }
 
-        if (selected.getAttributeNode("answer").value == right_answer) {
-          selected.parentElement.parentElement.classList.add("true");
-          audio.play();
-        } else {
-          selected.parentElement.parentElement.classList.add("false");
-          for (let i = 0; i < 4; i++) {
-            if (answers[i].getAttributeNode("answer").value == right_answer) {
-              answers[i].parentElement.parentElement.classList.add("true");
-            }
+        selected = Array.from(answers).find((radio) => radio.checked);
+        if (selected) {
+          const answerValue = selected.getAttribute("answer");
+          const isCorrect =
+            answerValue === data[questionsPage - 1][current].right_answer;
+          selected.parentElement.parentElement.classList.add(
+            isCorrect ? "true" : "false"
+          );
+
+          if (!isCorrect) {
+            answers.forEach((radio) => {
+              if (
+                radio.getAttribute("answer") ===
+                data[questionsPage - 1][current].right_answer
+              ) {
+                radio.parentElement.parentElement.classList.add("true");
+              }
+            });
           }
+
+          if (isCorrect) audio.play();
         }
-      });
+      }
 
       function openNav() {
         document.getElementById("mySidenav").classList.add("side-width");
@@ -338,31 +322,34 @@
         document.body.style.overflowY = "visible";
       }
 
-      document.addEventListener("click", function (e) {
-        if (
-          e.target.className == "bg" ||
-          e.target.className == "home-page" ||
-          e.target.className == "container"
-        ) {
+      function handleDocumentClick(e) {
+        if (["bg", "home-page", "container"].includes(e.target.className)) {
           closeNav();
         }
-      });
-
-      function ctrlShiftKey(e, keyCode) {
-        return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
       }
 
-      document.onkeydown = (e) => {
-        // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-        if (
-          event.keyCode === 123 ||
-          ctrlShiftKey(e, "I") ||
-          ctrlShiftKey(e, "J") ||
-          ctrlShiftKey(e, "C") ||
-          (e.ctrlKey && e.keyCode === "U".charCodeAt(0))
-        )
-          return false;
-      };
+      function handleKeyDown(e) {
+        const forbiddenKeys = [
+          123,
+          "I".charCodeAt(0),
+          "J".charCodeAt(0),
+          "C".charCodeAt(0),
+          "U".charCodeAt(0),
+        ];
+        if (forbiddenKeys.includes(e.keyCode)) {
+          e.preventDefault();
+        }
+      }
+
+      document.addEventListener("click", handleQuestionLinkClick);
+      next.addEventListener("click", handleNavigationClick);
+      back.addEventListener("click", handleBackClick);
+      form.addEventListener("submit", handleSubmit);
+      document.addEventListener("click", handleDocumentClick);
+      document.addEventListener("keydown", handleKeyDown);
+
+      populateQuestionLinks();
+      set();
     </script>
   </body>
 </html>

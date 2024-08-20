@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
   <head>
@@ -18,7 +16,7 @@
   >
     <div id="mySidenav" class="sidenav">
       <div class="side-content">
-        <div href="" class="closebtn" onclick="closeNav()">&times;</div>
+        <div href="" class="closebtn">&times;</div>
         <ul id="quiz-links" class="quiz-links"></ul>
         <hr />
 
@@ -43,7 +41,6 @@
         <div class="nav-icons">
           <a href="/index.html"><button class="btn-back">عودة</button></a>
           <img
-            onclick="openNav()"
             class="Menu-icon"
             src="../Images/icons8-menu-96-_3_.svg"
             alt="menu-icon"
@@ -143,459 +140,329 @@
       </div>
     </div>
     <script>
-      let data = [
-        [
+      (function () {
+        const data = [
           [
-            {
-              name: "quiz1",
-              time: { minutes: 9, seconds: 60 },
-            },
+            [
+              { name: "quiz1", time: { minutes: 9, seconds: 60 } },
+              {
+                Questions:
+                  "كتلتان إحداهما من الحجر الجيري و الأخرى من الحجر الرملي تعرضا لقوى مختلفة و لهما سُمك متساوي ، فإن المسافة في الفواصل يتحكم فيها ...... ",
+                answer1: "سمك الصخر و نوع الصخر و القوى المؤثرة عليه",
+                answer2: "السمك و القوى فقط",
+                answer3: "النوع و السمك فقط",
+                answer4: "لا توجد إجابة",
+                right_answer: "النوع و السمك فقط",
+              },
 
-            {
-              Questions:
-                "كتلتان إحداهما من الحجر الجيري و الأخرى من الحجر الرملي تعرضا لقوى مختلفة و لهما سُمك متساوي ، فإن المسافة في الفواصل يتحكم فيها ...... ",
-              answer1: "سمك الصخر و نوع الصخر و القوى المؤثرة عليه",
-              answer2: "السمك و القوى فقط",
-              answer3: "النوع و السمك فقط",
-              answer4: "لا توجد إجابة",
-              right_answer: "النوع و السمك فقط",
-            },
+              {
+                Questions: "كل ما يلي لا يعتبر عامل خارجي عدا .......",
+                answer1: "القوة المكونة الفواصل",
+                answer2: "الظروف البيئية",
+                answer3: "قوى الضغط",
+                answer4: "قوى الشد",
+                right_answer: "الظروف البيئية",
+              },
 
-            {
-              Questions: "كل ما يلي لا يعتبر عامل خارجي عدا .......",
-              answer1: "القوة المكونة الفواصل",
-              answer2: "الظروف البيئية",
-              answer3: "قوى الضغط",
-              answer4: "قوى الشد",
-              right_answer: "الظروف البيئية",
-            },
+              {
+                Questions:
+                  "فرع الجيولوجيا الذي يحدد أشكال التموجات الرملية في بحر الرمال العظيم و كذلك شكل ترسيب الرواسب بشكل غير متوازي في التطبق المتقاطع هو ...",
+                answer1: "الجيولوجيا الطبيعية",
+                answer2: "الجيولوجيا التركيبية",
+                answer3: "علم الطبقات",
+                answer4: "علم الجيوفيزيا",
+                right_answer: "الجيولوجيا التركيبية",
+              },
 
-            {
-              Questions:
-                "فرع الجيولوجيا الذي يحدد أشكال التموجات الرملية في بحر الرمال العظيم و كذلك شكل ترسيب الرواسب بشكل غير متوازي في التطبق المتقاطع هو ...",
-              answer1: "الجيولوجيا الطبيعية",
-              answer2: "الجيولوجيا التركيبية",
-              answer3: "علم الطبقات",
-              answer4: "علم الجيوفيزيا",
-              right_answer: "الجيولوجيا التركيبية",
-            },
+              {
+                Questions: "أي مما يلي لا يعتبر تراكيب أولية ؟",
+                answer1: "علامات النيم",
+                answer2: "التشققات الصخرية",
+                answer3: "التشققات الطينية",
+                answer4: "التدرج الطبقي",
+                right_answer: "التشققات الصخرية",
+              },
 
-            {
-              Questions: "أي مما يلي لا يعتبر تراكيب أولية ؟",
-              answer1: "علامات النيم",
-              answer2: "التشققات الصخرية",
-              answer3: "التشققات الطينية",
-              answer4: "التدرج الطبقي",
-              right_answer: "التشققات الصخرية",
-            },
+              {
+                Questions:
+                  "وجه الشبه بين التدرج الطبقي و التطبق المتقاطع هو .....",
+                answer1: "نوع العامل المكون",
+                answer2: "شكل ترسيب الرواسب على سطح الأرض",
+                answer3: "اختلاف اتجاه الرياح في تكوين كلاهما",
+                answer4: "اختلاف سرعة الماء في تكوين كلاهما",
+                right_answer: "شكل ترسيب الرواسب على سطح الأرض",
+              },
 
-            {
-              Questions:
-                "وجه الشبه بين التدرج الطبقي و التطبق المتقاطع هو .....",
-              answer1: "نوع العامل المكون",
-              answer2: "شكل ترسيب الرواسب على سطح الأرض",
-              answer3: "اختلاف اتجاه الرياح في تكوين كلاهما",
-              answer4: "اختلاف سرعة الماء في تكوين كلاهما",
-              right_answer: "شكل ترسيب الرواسب على سطح الأرض",
-            },
+              {
+                Questions:
+                  "دراسة خصائص التيار المائي المكوّن للتدرج الطبقي من اختصاصات فرع ......",
+                answer1: "الجيولوجيا التركيبية",
+                answer2: "علم الطبقات",
+                answer3: "الجيولوجيا الطبيعية",
+                answer4: "الجيوفيزيا",
+                right_answer: "الجيولوجيا الطبيعية",
+              },
 
-            {
-              Questions:
-                "دراسة خصائص التيار المائي المكوّن للتدرج الطبقي من اختصاصات فرع ......",
-              answer1: "الجيولوجيا التركيبية",
-              answer2: "علم الطبقات",
-              answer3: "الجيولوجيا الطبيعية",
-              answer4: "الجيوفيزيا",
-              right_answer: "الجيولوجيا الطبيعية",
-            },
+              {
+                Questions:
+                  "إذا كان طول عمود الهواء عند قمة الجبل س حوالي ٩٩٧.٢٥ كم و ارتفاع الجبل ص ٤ أمثال الإرتفاع س ، فإن الضغط الجوي الواقع على قمة الجبل ص حوالي ..... ض.ج",
+                answer1: "واحد",
+                answer2: "ربع",
+                answer3: "ربع",
+                answer4: "تمن",
+                right_answer: "ربع",
+              },
 
-            {
-              Questions:
-                "إذا كان طول عمود الهواء عند قمة الجبل س حوالي ٩٩٧.٢٥ كم و ارتفاع الجبل ص ٤ أمثال الإرتفاع س ، فإن الضغط الجوي الواقع على قمة الجبل ص حوالي ..... ض.ج",
-              answer1: "واحد",
-              answer2: "ربع",
-              answer3: "ربع",
-              answer4: "تمن",
-              right_answer: "ربع",
-            },
+              {
+                Questions:
+                  "اكتشفنا أن سيارة نقل ما ، قادرة على نقل ٣٠ متر مكعب من صخور القشرة القارية فإنها بذلك قادرة على نقل حوالي ..... متر مكعب من صخور القشرة المحيطية.",
+                answer1: "20",
+                answer2: "30",
+                answer3: "50",
+                answer4: "60",
+                right_answer: "20",
+              },
 
-            {
-              Questions:
-                "اكتشفنا أن سيارة نقل ما ، قادرة على نقل ٣٠ متر مكعب من صخور القشرة القارية فإنها بذلك قادرة على نقل حوالي ..... متر مكعب من صخور القشرة المحيطية.",
-              answer1: "20",
-              answer2: "30",
-              answer3: "50",
-              answer4: "60",
-              right_answer: "20",
-            },
+              {
+                Questions:
+                  "الصخور الموجودة على عمق ٥٠كم أسفل اليابسة و الصخور الموجودة على عمق ٥٠٠كم تتفقان في ......",
+                answer1: "البنية الكيميائية",
+                answer2: "الحالة الفيزيائية",
+                answer3: "قيمة الضغط الواقع عليهما",
+                answer4: "كثافة الصخور",
+                right_answer: "الحالة الفيزيائية",
+              },
 
-            {
-              Questions:
-                "الصخور الموجودة على عمق ٥٠كم أسفل اليابسة و الصخور الموجودة على عمق ٥٠٠كم تتفقان في ......",
-              answer1: "البنية الكيميائية",
-              answer2: "الحالة الفيزيائية",
-              answer3: "قيمة الضغط الواقع عليهما",
-              answer4: "كثافة الصخور",
-              right_answer: "الحالة الفيزيائية",
-            },
-
-            {
-              Questions:
-                "أثبتت الدراسات أن كتلة القشرة الأرضية تعادل ١٪ من كتلة الأرض فإن كتلة الوشاح تمثل .....٪ من كتلة الأرض.",
-              answer1: "66%",
-              answer2: "80%",
-              answer3: "89%",
-              answer4: "99%",
-              right_answer: "66%",
-            },
+              {
+                Questions:
+                  "أثبتت الدراسات أن كتلة القشرة الأرضية تعادل ١٪ من كتلة الأرض فإن كتلة الوشاح تمثل .....٪ من كتلة الأرض.",
+                answer1: "66%",
+                answer2: "80%",
+                answer3: "89%",
+                answer4: "99%",
+                right_answer: "66%",
+              },
+            ],
           ],
+        ];
 
-          [
-            {
-              name: "quiz2",
-              time: { minutes: 9, seconds: 60 },
-            },
+        let status = false;
+        let current = 1;
+        let user_answers = [];
+        let right_answer = data[0][0][current]["right_answer"];
+        let timerSeconds;
 
-            {
-              Questions:
-                "كتلتان إحداهما من الحجر الجيري و الأخرى من الحجر الرملي تعرضا لقوى مختلفة و لهما سُمك متساوي ، فإن المسافة في الفواصل يتحكم فيها  ",
-              answer1: "سمك الصخر و نوع الصخر و القوى المؤثرة عليه",
-              answer2: "السمك و القوى فقط",
-              answer3: "النوع و السمك فقط",
-              answer4: "لا توجد إجابة",
-              right_answer: "النوع و السمك فقط",
-            },
+        const elements = {
+          dark: document.querySelector(".btn-dark"),
+          light: document.querySelector(".btn-light"),
+          questionsNum: document.querySelector(".Questions-header p"),
+          answers: document.querySelectorAll(".answer"),
+          answerLabels: document.querySelectorAll(".answer-label"),
+          form: document.getElementById("form"),
+          next: document.getElementById("next"),
+          back: document.getElementById("back"),
+          submit: document.getElementById("submit"),
+          question: document.querySelector(".Question p"),
+          second: document.getElementById("second"),
+          minute: document.getElementById("minute"),
+          quizLinks: document.getElementById("quiz-links"),
+          questionsCon: document.querySelector(".Questions-con"),
+          resultCon: document.querySelector(".resuilt"),
+          resultEle: document.querySelector(".resuilt-box h4"),
+          MenuIcon: document.querySelector(".Menu-icon"),
+          closebtn: document.querySelector(".closebtn"),
+        };
 
-            {
-              Questions: "كل ما يلي لا يعتبر عامل خارجي عدا .......",
-              answer1: "القوة المكونة الفواصل",
-              answer2: "الظروف البيئية",
-              answer3: "قوى الضغط",
-              answer4: "قوى الشد",
-              right_answer: "الظروف البيئية",
-            },
+        const time = {
+          minutes: data[0][0][0]["time"].minutes,
+          seconds: data[0][0][0]["time"].seconds,
+        };
 
-            {
-              Questions:
-                "فرع الجيولوجيا الذي يحدد أشكال التموجات الرملية في بحر الرمال العظيم و كذلك شكل ترسيب الرواسب بشكل غير متوازي في التطبق المتقاطع هو ...",
-              answer1: "الجيولوجيا الطبيعية",
-              answer2: "الجيولوجيا التركيبية",
-              answer3: "علم الطبقات",
-              answer4: "علم الجيوفيزيا",
-              right_answer: "الجيولوجيا التركيبية",
-            },
-
-            {
-              Questions: "أي مما يلي لا يعتبر تراكيب أولية ؟",
-              answer1: "علامات النيم",
-              answer2: "التشققات الصخرية",
-              answer3: "التشققات الطينية",
-              answer4: "التدرج الطبقي",
-              right_answer: "التشققات الصخرية",
-            },
-
-            {
-              Questions:
-                "وجه الشبه بين التدرج الطبقي و التطبق المتقاطع هو .....",
-              answer1: "نوع العامل المكون",
-              answer2: "شكل ترسيب الرواسب على سطح الأرض",
-              answer3: "اختلاف اتجاه الرياح في تكوين كلاهما",
-              answer4: "اختلاف سرعة الماء في تكوين كلاهما",
-              right_answer: "شكل ترسيب الرواسب على سطح الأرض",
-            },
-
-            {
-              Questions:
-                "دراسة خصائص التيار المائي المكوّن للتدرج الطبقي من اختصاصات فرع ......",
-              answer1: "الجيولوجيا التركيبية",
-              answer2: "علم الطبقات",
-              answer3: "الجيولوجيا الطبيعية",
-              answer4: "الجيوفيزيا",
-              right_answer: "الجيولوجيا الطبيعية",
-            },
-
-            {
-              Questions:
-                "إذا كان طول عمود الهواء عند قمة الجبل س حوالي ٩٩٧.٢٥ كم و ارتفاع الجبل ص ٤ أمثال الإرتفاع س ، فإن الضغط الجوي الواقع على قمة الجبل ص حوالي ..... ض.ج",
-              answer1: "واحد",
-              answer2: "ربع",
-              answer3: "ربع",
-              answer4: "تمن",
-              right_answer: "ربع",
-            },
-
-            {
-              Questions:
-                "اكتشفنا أن سيارة نقل ما ، قادرة على نقل ٣٠ متر مكعب من صخور القشرة القارية فإنها بذلك قادرة على نقل حوالي ..... متر مكعب من صخور القشرة المحيطية.",
-              answer1: "20",
-              answer2: "30",
-              answer3: "50",
-              answer4: "60",
-              right_answer: "20",
-            },
-
-            {
-              Questions:
-                "الصخور الموجودة على عمق ٥٠كم أسفل اليابسة و الصخور الموجودة على عمق ٥٠٠كم تتفقان في ......",
-              answer1: "البنية الكيميائية",
-              answer2: "الحالة الفيزيائية",
-              answer3: "قيمة الضغط الواقع عليهما",
-              answer4: "كثافة الصخور",
-              right_answer: "الحالة الفيزيائية",
-            },
-
-            {
-              Questions:
-                "أثبتت الدراسات أن كتلة القشرة الأرضية تعادل ١٪ من كتلة الأرض فإن كتلة الوشاح تمثل .....٪ من كتلة الأرض.",
-              answer1: "66%",
-              answer2: "80%",
-              answer3: "89%",
-              answer4: "99%",
-              right_answer: "66%",
-            },
-          ],
-        ],
-      ];
-      let status;
-      const quiz = "";
-      let user_grade;
-
-      const dark = document.querySelector(".btn-dark");
-      const light = document.querySelector(".btn-light");
-      const Questions_num = document.querySelector(".Questions-header p");
-      const answers = document.querySelectorAll(".answer");
-      const answer_label = document.querySelectorAll(".answer-label");
-      const form = document.getElementById("form");
-      const next = document.getElementById("next");
-      const back = document.getElementById("back");
-      const submit = document.getElementById("submit");
-      const Question = document.querySelector(".Question p");
-      const second = document.getElementById("second");
-      const minute = document.getElementById("minute");
-      const quiz_links = document.getElementById("quiz-links");
-      const Questions_con = document.querySelector(".Questions-con");
-      const resuilt_con = document.querySelector(".resuilt");
-      const resulit_ele = document.querySelector(".resuilt-box h4");
-
-      let time = {
-        minutes: data[0][0][0]["time"].minutes,
-        seconds: data[0][0][0]["time"].seconds,
-      };
-
-      let timerSeconds = setInterval(function () {
-        if (time.minutes == 0 && time.seconds == 0) {
-          clear();
-        }
-        if (time.seconds != 0) {
-          time.seconds--;
-          second.innerHTML = time.seconds;
-        } else if (time.minutes != 0) {
-          time.seconds = 60;
-          second.innerHTML = time.seconds;
-          time.minutes--;
-          minute.innerHTML = time.minutes;
-        }
-      }, 1000);
-
-      let status_finish = status;
-      let selected;
-      let current = 1;
-      let user_anserws = [];
-      let right_answer = data[0][0][current]["right_answer"];
-
-      let theme = localStorage.getItem("theme");
-      if (theme != null) {
-        changeTheme(theme);
-      }
-
-      if (status_finish == true) {
-        resuilt();
-      }
-
-      dark.addEventListener("click", function () {
-        let theme = "dark";
-        localStorage.setItem("theme", theme);
-        changeTheme(theme);
-      });
-
-      light.addEventListener("click", function () {
-        let theme = "light";
-        localStorage.setItem("theme", theme);
-        changeTheme(theme);
-      });
-
-      function changeTheme(theme) {
-        if (theme == "dark") {
-          document.body.className = "dark-theme";
-          light.classList.remove("active-btn");
-          dark.classList.add("active-btn");
-        } else {
-          document.body.className = "light-theme";
-          dark.classList.remove("active-btn");
-          light.classList.add("active-btn");
-        }
-      }
-
-      function openNav() {
-        document.getElementById("mySidenav").classList.add("side-width");
-        document.body.style.overflowY = "hidden";
-      }
-
-      function closeNav() {
-        document.getElementById("mySidenav").classList.remove("side-width");
-        document.body.style.overflowY = "visible";
-      }
-
-      document.addEventListener("click", function (e) {
-        if (
-          e.target.className == "bg" ||
-          e.target.className == "home-page" ||
-          e.target.className == "container"
-        ) {
-          closeNav();
-        }
-      });
-
-      minute.innerHTML = time.minutes;
-      second.innerHTML = time.seconds;
-
-      function clear() {
-        clearInterval(timerSeconds);
-        resuilt();
-      }
-
-      function resuilt() {
-        let resuilt = 0;
-        let quiz_grade = data[0][0].length - 1;
-        let right_answer = data[0][0]["right_answer"];
-        if (user_anserws.length != 0) {
-          for (let i = 0; i < user_anserws.length; i++) {
-            if (user_anserws[i] == data[0][0][i + 1]["right_answer"]) {
-              resuilt++;
-            }
-          }
-        } else {
-          resuilt = 0;
-        }
-
-        resulit_ele.innerHTML = `${resuilt || 0 } - ${quiz_grade}`;
-        submit.style.visibility = "hidden";
-        current = 1;
-        status = true;
-        resuilt_con.style.visibility = "visible";
-        clearInterval(timerSeconds);
-      }
-      for (let i = 1; i <= data[0][0].length - 1; i++) {
-        let li = document.createElement("li");
-        let text = document.createTextNode(`السوال ${i}`);
-        li.id = i;
-        li.className = "quiz-link";
-        li.appendChild(text);
-        quiz_links.appendChild(li);
-      }
-
-      document.addEventListener("click", function (e) {
-        if (e.target.classList == "quiz-link") {
-          console.log(e.target.id);
-          current = e.target.id;
-          set();
-        }
-      });
-
-      function set() {
-        right_answer = data[0][0][current]["right_answer"];
-        Question.innerHTML = data[0][0][current][`Questions`];
-        Questions_num.innerHTML = `${current} من ${data[0][0].length - 1}`;
-
-        for (let i = 1; i <= 4; i++) {
-          if (data[0][0][current][`answer${i}`] == undefined) {
-            answer_label[i - 1].style.display = "none";
-            answers[i - 1].style.display = "none";
+        function updateTime() {
+          if (time.minutes === 0 && time.seconds === 0) {
+            clearTimer();
+            showResult();
           } else {
-            answer_label[i - 1].style.display = "inline-block";
-            answers[i - 1].style.display = "inline-block";
+            if (time.seconds > 0) {
+              time.seconds--;
+            } else if (time.minutes > 0) {
+              time.seconds = 59;
+              time.minutes--;
+            }
+            elements.second.textContent = time.seconds;
+            elements.minute.textContent = time.minutes;
           }
-          answer_label[i - 1].innerHTML = data[0][0][current][`answer${i}`];
-          answers[i - 1].setAttribute(
-            "answer",
-            data[0][0][current][`answer${i}`]
-          );
         }
 
-        if (current == parseInt(data[0][0].length - 1)) {
-          submit.value = "انهاء";
-        } else {
-          submit.value = "اجابة";
+        function clearTimer() {
+          clearInterval(timerSeconds);
         }
 
-        if (status_finish == "finish") {
-          for (const radio of answers) {
-            if (
-              radio.getAttributeNode("answer").value ==
-              data[0][0][current]["right_answer"]
-            ) {
-              for (const radio of answers) {
-                radio.parentElement.classList.remove("true");
-              }
-              radio.parentElement.classList.add("true");
+        function showResult() {
+          let result = 0;
+          const quizGrade = data[0][0].length - 1;
+          user_answers.forEach((answer, index) => {
+            if (answer === data[0][0][index + 1]["right_answer"]) {
+              result++;
+            }
+          });
+
+          elements.resultEle.textContent = `${result || 0} - ${quizGrade}`;
+          elements.submit.style.visibility = "hidden";
+          current = 1;
+          status = true;
+          elements.resultCon.style.display = "flex";
+          clearTimer();
+        }
+
+        function setQuiz() {
+          right_answer = data[0][0][current]["right_answer"];
+          elements.question.innerHTML = data[0][0][current]["Questions"];
+          elements.questionsNum.innerHTML = `${current} من ${
+            data[0][0].length - 1
+          }`;
+
+          for (let i = 1; i <= 4; i++) {
+            const answer = data[0][0][current][`answer${i}`];
+            if (answer === undefined) {
+              elements.answerLabels[i - 1].style.display = "none";
+              elements.answers[i - 1].style.display = "none";
+            } else {
+              elements.answerLabels[i - 1].style.display = "inline-block";
+              elements.answers[i - 1].style.display = "inline-block";
+              elements.answerLabels[i - 1].innerHTML = answer;
+              elements.answers[i - 1].setAttribute("answer", answer);
             }
           }
-        }
-      }
 
-      set();
+          elements.submit.value =
+            current === data[0][0].length - 1 ? "انهاء" : "اجابة";
 
-      next.addEventListener("click", function () {
-        if (current != parseInt(data[0][0].length - 1)) {
-          current++;
-          set();
-        }
-      });
-
-      back.addEventListener("click", function () {
-        if (current != 1) {
-          current--;
-          set();
-        }
-      });
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        for (const radio of answers) {
-          if (radio.checked) {
-            selected = radio;
-            break;
+          if (status === "finish") {
+            elements.answers.forEach((radio) => {
+              if (
+                radio.getAttribute("answer") ===
+                data[0][0][current]["right_answer"]
+              ) {
+                elements.answers.forEach((radio) =>
+                  radio.parentElement.classList.remove("true")
+                );
+                radio.parentElement.classList.add("true");
+              }
+            });
           }
         }
 
-        selected == undefined
-          ? (user_anserws[current - 1] = " ")
-          : (user_anserws[current - 1] =
-              selected.getAttributeNode("answer").value);
-
-        if (current != parseInt(data[0][0].length - 1)) {
-          current++;
-          set();
-        } else {
-          resuilt();
+        function populateQuestionLinks() {
+          for (let i = 1; i <= data[0][0].length - 1; i++) {
+            const li = document.createElement("li");
+            li.id = i;
+            li.className = "Question_link";
+            li.textContent = `السوال ${i}`;
+            elements.quizLinks.appendChild(li);
+          }
         }
-      });
 
-      function ctrlShiftKey(e, keyCode) {
-        return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
-      }
+        function handleQuestionLinkClick(e) {
+          if (e.target.classList.contains("Question_link")) {
+            current = parseInt(e.target.id, 10);
+            setQuiz();
+          }
+        }
 
-      document.onkeydown = (e) => {
-        // Disable F12, Ctrl + Shift + I, Ctrl + Shift + J, Ctrl + U
-        if (
-          event.keyCode === 123 ||
-          ctrlShiftKey(e, "I") ||
-          ctrlShiftKey(e, "J") ||
-          ctrlShiftKey(e, "C") ||
-          (e.ctrlKey && e.keyCode === "U".charCodeAt(0))
-        )
-          return false;
-      };
+        function changeTheme(theme) {
+          document.body.className = `${theme}-theme`;
+          elements.light.classList.toggle("active-btn", theme === "light");
+          elements.dark.classList.toggle("active-btn", theme === "dark");
+          localStorage.setItem("theme", theme);
+        }
+
+        function handleQuizLinkClick(e) {
+          if (e.target.classList.contains("quiz-link")) {
+            current = parseInt(e.target.id, 10);
+            setQuiz();
+          }
+        }
+
+        function handleFormSubmit(e) {
+          e.preventDefault();
+          const selected = [...elements.answers].find((radio) => radio.checked);
+          user_answers[current - 1] = selected
+            ? selected.getAttribute("answer")
+            : " ";
+          if (current < data[0][0].length - 1) {
+            current++;
+            setQuiz();
+          } else {
+            showResult();
+          }
+        }
+
+        function openNav() {
+          document.getElementById("mySidenav").classList.add("side-width");
+          document.body.style.overflowY = "hidden";
+        }
+
+        function closeNav() {
+          document.getElementById("mySidenav").classList.remove("side-width");
+          document.body.style.overflowY = "visible";
+        }
+
+        function handleKeydown(e) {
+          const forbiddenKeys = [
+            123,
+            "I".charCodeAt(0),
+            "J".charCodeAt(0),
+            "C".charCodeAt(0),
+            "U".charCodeAt(0),
+          ];
+          if (
+            forbiddenKeys.includes(e.keyCode) ||
+            (e.ctrlKey && forbiddenKeys.includes(e.keyCode))
+          ) {
+            e.preventDefault();
+          }
+        }
+
+        function init() {
+          if (localStorage.getItem("theme")) {
+            changeTheme(localStorage.getItem("theme"));
+          }
+          elements.MenuIcon.addEventListener("click", () => openNav());
+          elements.closebtn.addEventListener("click", () => closeNav());
+          elements.dark.addEventListener("click", () => changeTheme("dark"));
+          elements.light.addEventListener("click", () => changeTheme("light"));
+          document.addEventListener("click", handleQuestionLinkClick);
+          elements.next.addEventListener("click", () => {
+            if (current < data[0][0].length - 1) {
+              current++;
+              setQuiz();
+            }
+          });
+          elements.back.addEventListener("click", () => {
+            if (current > 1) {
+              current--;
+              setQuiz();
+            }
+          });
+          elements.form.addEventListener("submit", handleFormSubmit);
+          document.addEventListener("click", (e) => {
+            if (["bg", "home-page", "container"].includes(e.target.className)) {
+              closeNav();
+            }
+          });
+          document.addEventListener("click", handleQuizLinkClick);
+          document.addEventListener("keydown", handleKeydown);
+
+          timerSeconds = setInterval(updateTime, 1000);
+
+          // Initialize quiz
+          setQuiz();
+        }
+
+        populateQuestionLinks();
+        init();
+      })();
     </script>
   </body>
 </html>
